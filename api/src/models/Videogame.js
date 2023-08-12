@@ -35,13 +35,5 @@ module.exports = (sequelize) => {
       allowNull:false,
       
     }
-
-  });
+  }, { timestamps: false });
 };
-// ID (deben ser distintos a los que vienen de la API). *
-// Nombre. *
-// Descripción. *
-// Plataformas. *
-// Imagen. *
-// Fecha de lanzamiento. *
-// Rating. *
