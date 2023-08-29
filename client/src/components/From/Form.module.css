@@ -1,0 +1,29 @@
+.divMain{
+    display: flex;
+    flex-direction: column;
+    background-color: gray;
+    height: 100vh;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.divForm{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 800px;
+    width: 35%;
+    background-color: rgba(66, 109, 62, 0.5);
+    border: 2px solid green;
+
+}
+
+.labels{
+    cursor: pointer;
+    display: block;
+    color: white;
+    text-shadow: 0 0 10px yellow;
+}

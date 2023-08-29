@@ -1,0 +1,86 @@
+.divContainer {
+  background: url('../../assets/backgroundLP.gif') no-repeat center center fixed;
+  background-size: cover;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  color: white;
+  font-family: sans-serif;
+}
+.title{
+margin: -50px 0 0 0;
+}
+
+.links {
+  margin: -100px 0 0 0;
+  text-decoration: none;
+  color: white;
+}
+
+.glitch {
+  font-size: 8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  position: relative;
+  color: white; /* Cambio de color a blanco */
+
+  text-shadow: 0.05em 0 0 rgba(255, 192, 203, 0.75), /* Cambio de color a rosa pastel */
+    -0.025em -0.05em 0 rgba(0, 206, 209, 0.75); /* Cambio de color a celeste pastel */
+
+  animation: glitch 2500ms infinite;
+}
+
+.glitch span {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.glitch span:first-child {
+  animation: glitch 650ms infinite;
+  clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+  transform: translate(-0.025em, -0.0125em);
+  opacity: 0.8;
+}
+.glitch span:last-child {
+  animation: glitch 375ms infinite;
+  clip-path: polygon(0 80%, 100% 20%, 100% 100%, 0 100%);
+  transform: translate(0.0125em, 0.025em);
+  opacity: 0.8;
+}
+
+@keyframes glitch {
+  0% {
+      text-shadow: 0.05em 0 0 rgba(255, 192, 203, 0.75),
+      -0.05em -0.025em 0 rgba(0, 206, 209, 0.75);
+  }
+  
+  15% {
+      text-shadow: -0.05em -0.025em 0 rgba(255, 192, 203, 0.75),
+      0.025em 0.025em 0 rgba(0, 206, 209, 0.75);
+  }
+  
+  50% {
+      text-shadow: 0.025em 0.05em 0 rgba(255, 192, 203, 0.75),
+      0.05em 0 0 rgba(0, 206, 209, 0.75), 
+      0 -0.05em 0 rgba(0, 206, 209, 0.75);
+  }
+  
+  100% {
+      text-shadow: -0.025em 0 0 rgba(255, 192, 203, 0.75),
+      -0.025em -0.025em 0 rgba(0, 206, 209, 0.75),
+      -0.025em -0.05em 0 rgba(0, 206, 209, 0.75);
+  }
+}
+
+.divList{
+  display: flex;
+  font-family: "Press Start 2P", sans-serif;
+}
+
+a {
+  text-decoration: none; /* Elimina el subrayado */
+  color: inherit; /* Hereda el color del texto padre */
+}
+
+
+

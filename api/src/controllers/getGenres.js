@@ -1,18 +1,29 @@
 axios = require('axios');
+const {Genre} = require('../db')
 require('dotenv').config();
 const {API_KEY}= process.env;
 
 const getGenres = async (req, res) => {
     try {
-        const response = await axios.get(`https://api.rawg.io/api/genres?key=${API_KEY}`);
+        const dbGenres = await Genre.findAll();
+        if (dbGenres.length) { // Cambio aquí: verificamos si dbGenres tiene elementos
+            const genreNames = dbGenres.map(genre => genre.name);
+            return res.status(200).json(genreNames);
+        }
 
-        const genres = response.data.results.map(genre => genre.name);
+        const genres = await axios.get(`https://api.rawg.io/api/genres?key=${API_KEY}`).then((response)=>{
+            return response.data.results.map(genre => genre.name);
+        });
 
-        // Aquí puedes utilizar la función para crear los géneros en tu base de datos, si es necesario
+        //await Genre.bulkCreate(genres);
+        //await Genre.bulkCreate(genres, { fields: ['name'] });
+        for (const genreName of genres) {
+            await Genre.create({ name: genreName });
+        }
 
         return res.status(200).json(genres);
     } catch (error) {
-        return res.status(400).send('Algo salió mal');
+        return res.status(400).json({error:error.message});
     }
 }
 

@@ -1,0 +1,21 @@
+.cardContainer {
+    display: inline-block; /* Asegura que el contenedor se ajuste al contenido */
+    text-align: center; /* Centra el contenido horizontalmente */
+}
+
+.cardContainer img {
+    width: 270px;
+    height: 170px;
+    border: 10px solid transparent; /* Define un borde transparente */
+    border-image-slice: 1; /* Asegura que el gradiente se aplique solo en los bordes */
+    border-radius: 15px; /* Aplica el border-radius solo en los bordes inferiores */
+}
+
+
+
+.genres {
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
