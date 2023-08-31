@@ -4,14 +4,13 @@ export const GET_VIDEOGAMES = 'GET_VIDEOGAMES';
 export const SET_PAGE = 'SET_PAGE';
 export const GET_VIDEOGAMES_BY_NAME = 'GET_VIDEOGAMES_BY_NAME';
 export const GET_ALL_GENRES = 'GET_ALL_GENRES'
+export const FILTER_ORDER = "FILTER_ORDER";
+export const FILTER_RATING = "FILTER_RATING";
+export const FILTER_GENRE = "FILTER_GENRE";
+export const FILTER_PLACE = "FILTER_PLACE";
 
-export const FILTER_CREATED  = "FILTER_CREATED";
-export const FILTER_ORDER    = "FILTER_ORDER";
-export const FILTER_RATING   = "FILTER_RATING";
-export const FILTER_GENRE    = "FILTER_GENRE";
-export const FILTER_PLATFORM = "FILTER_PLATFORM";
 
-export const ORDER ='ORDER'
+
 
 export const getAllVideoGames = () => {
   const endpoint = 'http://localhost:3001/games/videogames';
@@ -59,46 +58,29 @@ export function getVideogamesByName(payload) {
   }
 }
 
-
-
-
-export function orderCards(order){
-    return{
-        type:'ORDER',
-        payload: order,
-    }
-
-}
-
-
-// Filters
-export const filterCreated = ( payload ) => {
-  return {
-      type: FILTER_CREATED,
-      payload
-  }
-};
-export const filterOrdered = ( payload ) => {
+export const filterOrder = ( payload ) => {
   return {
       type: FILTER_ORDER,
-      payload
+      payload: payload
   }
 };
 export const filterRating = ( payload ) => {
   return {
       type: FILTER_RATING,
-      payload
+      payload: payload
   }
 };
-export const filterPlatform = ( payload ) => {
-  return {
-      type: FILTER_PLATFORM,
-      payload
-  }
-};
+
 export const filterGenre = ( payload ) => {
   return {
       type: FILTER_GENRE,
-      payload
+      payload: payload
+  }
+};
+
+export const filterPlace = ( payload ) => {
+  return {
+      type: FILTER_PLACE,
+      payload: payload
   }
 };

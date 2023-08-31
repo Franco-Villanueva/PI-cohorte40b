@@ -26,11 +26,29 @@ const getAllGames = async (req, res) => {
             }))
         );
 
-        const gamesDataBase = await Videogame.findAll({
-            include: Genre
+        const dbGames = await Videogame.findAll({
+            include: {
+                model: Genre,
+                as: 'genres', 
+                attributes: ["name"],
+                through: {
+                    attributes: [],
+                },
+            }
         });
 
-        return res.status(200).json([...gamesDataBase, ...gamesApi]);
+        const dbGamesFormatted = dbGames.map(game => ({
+            id: game.id,
+            name: game.name,
+            description: game.description,
+            platforms: game.platforms,
+            image: game.image,
+            release: game.release_date,
+            rating: game.rating,
+            genres: game.genres.map(genre => genre.name),
+        }));
+
+        return res.status(200).json([...dbGamesFormatted, ...gamesApi]);
     } catch (error) {
         return res.status(500).json({ error: error.message });
     }

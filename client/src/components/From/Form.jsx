@@ -4,18 +4,26 @@ import { Link } from "react-router-dom";
 import {  useSelector } from "react-redux";
 import { useState } from "react";
 import styles from './Form.module.css'
-import imgDefault from '../../assets/imgdefault.jpeg'
+import { useDispatch } from "react-redux";
+import { getAllGenres } from "../../redux/actions/actions";
+
 
 
 const regexRating = /^[0-5](\.[0-9]{1,2})?$/;
 
 export default function Form() {
 
+    const dispatch = useDispatch();
+
+    React.useEffect(()=>{
+        if(allGenres.length===0){dispatch(getAllGenres())}
+    },[dispatch])
+
     const allGenres = useSelector(state => state.allGenres);
 
     const [formData, setFormData] = useState({
         name: "",
-        image: `${imgDefault}`,
+        image: "",
         description: "",
         platforms: [],
         release: "",

@@ -2,6 +2,8 @@ import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import styles from './Detail.module.css'
+import imgLoading from '../../assets/loading.gif'
 
 export default function Card() {
 
@@ -23,37 +25,64 @@ export default function Card() {
     };
     return (
         <>
-        <div>
-            <button></button>
-            <img src={videoGame.image} alt={videoGame.name} width='1000px' height='700px' />
-            <h1>{videoGame.name}</h1>
-            <h2>release:{videoGame.release}</h2>
-            <h2>rating: {videoGame.rating}</h2>
-            <div dangerouslySetInnerHTML={{ __html: videoGame.description }} />
-            {videoGame.genres?.length > 0 && (
-                <div>
-                    <h3>Genres:</h3>
-                    {videoGame.genres.map((element, index) => (
-                        <div key={index}>
-                            <h4>{element}</h4>
-                        </div>
-                    ))}
+
+         
+            <div className={styles.divMain}>
+                {Object.keys(videoGame).length === 0 ?( 
+                <div >
+                    <img  src={imgLoading} alt="Loading" />
                 </div>
-            )}
-            {videoGame.platforms?.length > 0 && (
+                ):(
+                    <>
                 <div>
-                    <h3>Platforms:</h3>
-                    {videoGame.platforms.map((element, index) => (
-                        <div key={index}>
-                            <h4>{element}</h4>
-                        </div>
-                    ))}
+                        <img className={styles.img} src={videoGame.image} alt={videoGame.name} width='900px' height='700px' />
                 </div>
-            )}
-            <button onClick={handleGoBack}>
-                Go Back
-            </button>
-        </div>
+                    <div>
+                        <h1>{videoGame.name}</h1>
+                        <div className={styles.divDeco}></div>
+                        <h2>release:{videoGame.release}</h2>
+                        <div className={styles.divDeco}></div>
+                        <h2>rating: {videoGame.rating}✨</h2>
+                        <div className={styles.divDeco}></div>
+                        <div className={styles.divDes}>
+                        <div dangerouslySetInnerHTML={{ __html: videoGame.description }} />
+                        </div>
+                        <div className={styles.divDeco}></div>
+                        <h2>Genres</h2>
+                        
+                            {videoGame.genres?.length > 0 && (
+                                <div className={styles.divElemt}>
+                                    
+                                    {videoGame.genres.map((element, index) => (
+                                        <div key={index}>
+                                            <h4>-{element}-</h4>
+                                        </div>
+                                    ))}
+                                </div>
+                            )}
+                        <div className={styles.divDeco}></div>
+                        <h2>Platforms</h2>
+
+                            {videoGame.platforms?.length > 0 && (
+                                <div className={styles.divElemt}>
+                                    
+                                    {videoGame.platforms.map((element, index) => (
+                                        <div key={index}>
+                                            <h4>-{element}-</h4>
+                                        </div>
+                                    ))}
+                                </div>
+                            )}
+                    <button className={styles.buttonBack} onClick={handleGoBack}>
+                        Go Back
+                    </button>
+                    
+                </div>
+                </>
+                )}
+                
+            </div>
+    
         </>
     )
 }

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import SearchBar from "./SearchBar/SearchBar";
 import styles from './Nav.module.css';
 import logo from '../../../assets/start.png';
-export default function Nav({setShowResults}) {
+export default function Nav() {
 
     return (
         <>
@@ -22,7 +22,7 @@ export default function Nav({setShowResults}) {
             <div className={styles.divButtons}>
 
             <Link className={styles.Buttons} to='/create'><span>CREATE GAME</span></Link>
-            <Link className={styles.Buttons} to='/about'><span>ABOUT</span></Link>
+
             
             </div>
             <SearchBar />

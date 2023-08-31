@@ -1,7 +1,36 @@
-.divMain{
-    background: url('../../assets/lastbg-y5GoN2kJ5-transformed.jpeg') no-repeat center center fixed;
-    background-size: 100%;
-    margin-top: 140px;
+.divBackground {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('../../assets/lastbg-y5GoN2kJ5-transformed.jpeg') no-repeat center center fixed;
+  background-size: cover;
 }
 
+.divMain {
 
+  width: 100%;
+  height:100vh;
+  overflow: auto;
+  color: white;
+}
+.divMain::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6); 
+  z-index: -1;
+}
+
+  .divFilters {
+    background-color: rgba(250, 128, 148, 0.382);
+    border: 5px solid rgb(250, 128, 148);
+    width: 60rem;
+    height: 80px;
+    margin: 10px auto;
+    border-radius: 15px;
+    
+  }

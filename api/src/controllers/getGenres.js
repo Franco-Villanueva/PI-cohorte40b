@@ -15,8 +15,6 @@ const getGenres = async (req, res) => {
             return response.data.results.map(genre => genre.name);
         });
 
-        //await Genre.bulkCreate(genres);
-        //await Genre.bulkCreate(genres, { fields: ['name'] });
         for (const genreName of genres) {
             await Genre.create({ name: genreName });
         }

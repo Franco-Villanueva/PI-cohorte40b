@@ -1,0 +1,37 @@
+.divMain {
+    display: flex;
+    justify-content: space-evenly; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+}
+
+.divFilter{
+    margin: 0px auto ;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.filtersContainer {
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.customSelect {
+    padding: 6px;
+    font-size: 14px;
+    border: 3px solid rgb(250, 128, 148);
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+}
+
+.customOption {
+    background-color: gray;
+    color: lightblue;
+    font-size: 18px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+    
+}

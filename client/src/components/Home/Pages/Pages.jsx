@@ -1,11 +1,16 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { setPage } from "../../../redux/actions/actions";
+import styles from './Pages.module.css';
 
 export default function Page({ page,max }) {
     const dispatch = useDispatch();
 
     const [input, setInput] = React.useState(page.toString());
+
+    React.useEffect(() => {
+        setInput(page)
+    }, [page]);
 
     const updatePage = (newPage) => {
         const regexNumbers = /^[0-9]+$/;
@@ -30,19 +35,20 @@ export default function Page({ page,max }) {
     };
 
     return (
-        <div>
-            <button disabled={page <= 1} onClick={previousPage}>
-                Previous
+        <div className={styles.pageContainer}>
+            <button className={styles.pageButton} disabled={page <= 1} onClick={previousPage}>
+                Prev
             </button>
             <input
+            className={styles.pageInput}
                 onChange={(event) => setInput(event.target.value)}
                 onKeyPress={handleKeyPress}
                 name="page"
                 autoComplete="off"
                 value={input}
             />
-            <span> OF {max}</span>
-            <button disabled={page >= max} onClick={nextPage}>
+            <span className={styles.pageMax}> OF {max}</span>
+            <button className={styles.pageButton} disabled={page >= max} onClick={nextPage}>
                 Next
             </button>
         </div>

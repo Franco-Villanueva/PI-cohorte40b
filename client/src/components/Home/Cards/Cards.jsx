@@ -4,15 +4,12 @@ import Card from './Card/Card'; // Import your Card component
 import styles from './Cards.module.css'; // Import your styles
 import loadingImage from '../../../assets/loading.gif';
 import Page from '../Pages/Pages';
-import {  useSelector } from "react-redux";
 
-const Cards = ({ allVideoGames }) => {
-
-    const page = useSelector((state) => state.page);
-    const perPage = 15;
+const Cards = ({ allVideoGames, page, perPage }) => {
 
     const max = Math.ceil(allVideoGames.length / perPage);
 
+    const shouldRenderPage = allVideoGames.length > perPage;
 
 
     return (
@@ -24,17 +21,17 @@ const Cards = ({ allVideoGames }) => {
                         <span>LOADING...</span>
                     </div>
                 ) : (
-                    allVideoGames?.slice((page - 1) * perPage, (page - 1) * perPage + perPage).map((elemt, index) => (
+                    allVideoGames.slice((page - 1) * perPage, (page - 1) * perPage + perPage)?.map((elemt) => (
                         <div className={styles.divCard} key={elemt.id}>
                                 <Link to={`/detail/${elemt.id}`}>
-                                    {/* Link only wraps the content of Card */}
+                                    
                                     <Card name={elemt.name} image={elemt.image} genres={elemt.genres} key={elemt.id} />
                                 </Link>
                             </div>
                     ))
                 )}
             </div>
-            <Page page={page} max={max} />
+            {shouldRenderPage && <Page page={page} max={max} />}
         </>
     );
 };

@@ -1,0 +1,42 @@
+.pageContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.pageButton {
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    outline: none;
+    transition: background-color 0.3s;
+    margin: 0 5px;
+}
+
+.pageButton:disabled {
+    background-color: grey;
+    cursor: not-allowed;
+}
+
+.pageInput {
+    padding: 5px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    width: 50px;
+    text-align: center;
+    margin: 0 5px;
+}
+
+.pageMax {
+    color: white;
+    font-size: 20px;
+    margin: 0 5px;
+}
